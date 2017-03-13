@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+carturesti = Library.create!(name: 'Carturesti')
+[
+  { name: 'Lord of the Rings' },
+  { name: 'The Godfather' },
+  { name: 'The art of war' }
+].each { |b| Book.create!(b.merge(library: carturesti)) }
+
+cartea_de_nisip = Library.create!(name: 'Cartea de nisip')
+[
+  { name: 'Game of thrones' },
+  { name: 'Clean Code' }
+].each { |b| Book.create!(b.merge(library: cartea_de_nisip)) }
+
+user = User.create(email: 'john@carturesti.ro', password: 'password')
+user.library_id = carturesti.id
+user.skip_confirmation!
+user.save!
