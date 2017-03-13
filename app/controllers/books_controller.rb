@@ -4,6 +4,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
+    @books = Book.where(library_id: current_user.library_id)
+      .select { |b| can? :read, b }
   end
 
   # GET /books/1
