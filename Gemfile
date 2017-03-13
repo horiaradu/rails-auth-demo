@@ -65,3 +65,5 @@ gem 'dotenv-rails'
 
 # Authentication & Authorisation
 gem 'devise'
+
+gem 'cancancan'

@@ -1,10 +1,9 @@
 class LibrariesController < ApplicationController
-  before_action :set_library, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /libraries
   # GET /libraries.json
   def index
-    @libraries = Library.all
   end
 
   # GET /libraries/1
@@ -14,7 +13,6 @@ class LibrariesController < ApplicationController
 
   # GET /libraries/new
   def new
-    @library = Library.new
   end
 
   # GET /libraries/1/edit
@@ -62,13 +60,8 @@ class LibrariesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_library
-      @library = Library.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def library_params
-      params.require(:library).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def library_params
+    params.require(:library).permit(:name)
+  end
 end
