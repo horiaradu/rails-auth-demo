@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  belongs_to :library
+  has_many :memberships
+  has_many :libraries, through: :memberships
 end

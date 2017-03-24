@@ -19,7 +19,7 @@ cartea_de_nisip = Library.create!(name: 'Cartea de nisip')
   { name: 'Clean Code' }
 ].each { |b| Book.create!(b.merge(library: cartea_de_nisip)) }
 
-user = User.create(email: 'john@carturesti.ro', password: 'password')
-user.library_id = carturesti.id
+user = User.new(email: 'john@carturesti.ro', password: 'password')
 user.skip_confirmation!
 user.save!
+user.libraries << carturesti

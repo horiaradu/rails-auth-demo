@@ -1,12 +1,13 @@
-<%= form_for(book) do |f| %>
+<% url = book.id ? library_book_path(params[:library_id], book) : library_books_path(params[:library_id]) %>
+<%= form_for(book, url: url) do |f| %>
   <% if book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
       <ul>
-      <% book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
